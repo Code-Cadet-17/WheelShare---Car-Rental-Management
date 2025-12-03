@@ -1,65 +1,90 @@
-# WheelShare - Car Rental Management (Spring Boot Version)
+# WheelShare – Car Rental Management
 
-**Technologies Used:** Java (Spring Boot), JavaScript, HTML, CSS, Bootstrap 5, MySQL
+WheelShare is a web-based car rental management system built using Java Spring Boot, MySQL, HTML, CSS, JavaScript, and Bootstrap. The application allows users to view available cars, book rentals, return vehicles, and check their complete rental history.
 
-This project implements:
+---
 
-- Viewing available cars
-- Booking rentals (with start & end dates)
-- Returning vehicles
-- Viewing complete rental history for a user (by email)
+## Features
 
-## 1. Database Setup (MySQL)
+- View list of available cars
+- Book a car with name, email, and rental dates
+- Automatic calculation of total rental amount
+- Mark a booking as returned
+- View rental history using customer email
+- Responsive UI using Bootstrap
+- MySQL database with JPA/Hibernate
 
-Run the SQL script in `database/wheelshare.sql`:
+---
 
-```sql
-SOURCE database/wheelshare.sql;
-```
+## Technologies Used
 
-(or copy paste its contents into your MySQL client)
+- Java  
+- Spring Boot  
+- Spring MVC  
+- Spring Data JPA  
+- MySQL  
+- Thymeleaf  
+- HTML, CSS, JavaScript  
+- Bootstrap 5  
+- Maven  
 
-This creates:
+---
 
-- `wheelshare_db` database
-- `cars` table with sample rows
-- `bookings` table with FK to `cars`
+## Project Structure
 
-## 2. Configure DB credentials
+WheelShare - Car Rental Management/
+│
+├── pom.xml
+├── README.md
+├── database/
+│   └── wheelshare.sql
+│
+└── src/
+    ├── main/
+    │   ├── java/
+    │   │   └── com/
+    │   │       └── wheelshare/
+    │   │           └── carrental/
+    │   │               ├── CarRentalApplication.java
+    │   │               │
+    │   │               ├── controller/
+    │   │               │   ├── HomeController.java
+    │   │               │   ├── CarController.java
+    │   │               │   ├── BookingController.java
+    │   │               │   └── HistoryController.java
+    │   │               │
+    │   │               ├── model/
+    │   │               │   ├── Car.java
+    │   │               │   └── Booking.java
+    │   │               │
+    │   │               ├── repository/
+    │   │               │   ├── CarRepository.java
+    │   │               │   └── BookingRepository.java
+    │   │               │
+    │   │               └── service/
+    │   │                   ├── CarService.java
+    │   │                   └── BookingService.java
+    │   │
+    │   └── resources/
+    │       ├── application.properties
+    │       │
+    │       ├── templates/
+    │       │   ├── index.html
+    │       │   ├── booking-form.html
+    │       │   ├── booking-success.html
+    │       │   ├── history.html
+    │       │   └── history-form.html
+    │       │
+    │       └── static/
+    │           ├── css/
+    │           │   └── style.css
+    │           │
+    │           └── js/
+    │               └── main.js
+    │
+    └── test/
+        └── (auto-generated test files)
+👤 Author
 
-Edit `src/main/resources/application.properties`:
-
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/wheelshare_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
-spring.datasource.username=root
-spring.datasource.password=root
-```
-
-Put your own MySQL username/password.
-
-## 3. Build & Run
-
-```bash
-mvn clean install
-mvn spring-boot:run
-```
-
-Then open in browser:
-
-```
-http://localhost:8080/
-```
-
-## 4. Main URLs
-
-- `/cars` – List available cars (landing page)
-- `/bookings/new?carId={id}` – Booking form
-- `POST /bookings` – Create booking, calculate total, mark car unavailable
-- `/history` – Shows email form
-- `/history?email=xyz@example.com` – Rental history table
-- `POST /bookings/{id}/return` – Mark booking as RETURNED + free the car
-
-## 5. For your resume / report
-
-> **WheelShare - Car Rental Management**  
-> Developed a web-based application to manage car rentals. Features include viewing available cars with dates, booking rentals, returning vehicles, and maintaining complete rental history for users. Technologies used: **Java (Spring Boot), JavaScript, HTML, CSS, Bootstrap, MySQL**.
+Vyas Mittal
+vyasmittal1206@gmail.com
